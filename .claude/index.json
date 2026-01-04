@@ -1,0 +1,135 @@
+{
+  "lastUpdated": "2026-01-04T17:31:33+08:00",
+  "projectName": "campus-club-student",
+  "projectType": "Vue 3 Single Page Application",
+  "rootPath": "/Users/bytedance/Documents/LHGthings/campusProject/campus-club-student",
+  "modules": [
+    {
+      "name": "用户认证模块",
+      "path": "src/pages/",
+      "entryPoints": [
+        "src/pages/Login.vue",
+        "src/pages/Register.vue",
+        "src/pages/user/UserInfo.vue"
+      ],
+      "apis": [
+        "src/api/user.js"
+      ],
+      "stores": [
+        "src/pinia/userStore.js"
+      ],
+      "description": "用户登录、注册、个人信息管理",
+      "language": "Vue 3",
+      "coverage": "完整"
+    },
+    {
+      "name": "社团管理模块",
+      "path": "src/pages/club/",
+      "entryPoints": [
+        "src/pages/club/ClubList.vue",
+        "src/pages/club/ClubDetail.vue",
+        "src/pages/club/MyClub.vue",
+        "src/pages/club/MyClubApplication.vue"
+      ],
+      "apis": [
+        "src/api/club.js"
+      ],
+      "description": "社团浏览、详情查看、加入申请、我的社团管理",
+      "language": "Vue 3",
+      "coverage": "完整"
+    },
+    {
+      "name": "活动管理模块",
+      "path": "src/pages/activity/",
+      "entryPoints": [
+        "src/pages/activity/ActivityList.vue",
+        "src/pages/activity/ActivityDetail.vue",
+        "src/pages/activity/MyActivitySignup.vue"
+      ],
+      "apis": [
+        "src/api/activity.js"
+      ],
+      "description": "活动浏览、详情查看、报名管理",
+      "language": "Vue 3",
+      "coverage": "完整"
+    },
+    {
+      "name": "API 层",
+      "path": "src/api/",
+      "entryPoints": [
+        "src/api/user.js",
+        "src/api/club.js",
+        "src/api/activity.js",
+        "src/api/request.js"
+      ],
+      "utils": [
+        "src/utils/request.js"
+      ],
+      "description": "统一的 HTTP 请求封装与业务 API 接口",
+      "language": "JavaScript",
+      "coverage": "完整"
+    },
+    {
+      "name": "状态管理",
+      "path": "src/pinia/",
+      "entryPoints": [
+        "src/pinia/userStore.js"
+      ],
+      "description": "用户状态管理（Token、用户信息）",
+      "language": "JavaScript",
+      "coverage": "完整"
+    },
+    {
+      "name": "路由层",
+      "path": "src/router/",
+      "entryPoints": [
+        "src/router/index.js"
+      ],
+      "description": "路由配置与认证守卫",
+      "language": "JavaScript",
+      "coverage": "完整"
+    }
+  ],
+  "keyFiles": [
+    "src/main.js",
+    "src/App.vue",
+    "src/layouts/Layout.vue",
+    "src/router/index.js",
+    "src/pinia/userStore.js",
+    "src/utils/request.js",
+    "vite.config.js",
+    "package.json"
+  ],
+  "coverage": {
+    "totalFiles": 52,
+    "scannedFiles": 52,
+    "coveragePercentage": 100,
+    "ignoredFiles": 0,
+    "ignoredPatterns": [
+      "node_modules/**",
+      ".git/**",
+      "dist/**",
+      "*.log",
+      "*.lock"
+    ]
+  },
+  "gaps": [
+    {
+      "type": "测试",
+      "description": "项目中未发现测试文件（*.spec.js、*.test.js）",
+      "recommendation": "建议使用 Vitest 添加单元测试和组件测试"
+    },
+    {
+      "type": "代码质量工具",
+      "description": "项目中未配置 ESLint、Prettier 等代码质量工具",
+      "recommendation": "建议添加 ESLint + Prettier 保证代码风格统一"
+    }
+  ],
+  "truncated": false,
+  "nextSteps": [
+    "补充单元测试覆盖（优先 Pinia store 和工具函数）",
+    "添加 ESLint + Prettier 配置",
+    "考虑添加 TypeScript 支持",
+    "补充 API 接口文档（Swagger/OpenAPI）"
+  ]
+}
