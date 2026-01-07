@@ -1,26 +1,28 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
-import Cookies from 'js-cookie'
+import { defineStore } from "pinia";
+import { ref } from "vue";
 
-export const useUserStore = defineStore('user', () => {
-  // 状态：Token和用户信息
-  const token = ref(Cookies.get('token') || '')
-  const userInfo = ref({})
+export const useUserStore = defineStore("user", () => {
+  const TOKEN_KEY = "auth_token";
+  const USER_INFO_KEY = "user_info";
 
-  // 动作：登录（保存Token和用户信息）
+  const token = ref(localStorage.getItem(TOKEN_KEY) || "");
+  const userInfo = ref(JSON.parse(localStorage.getItem(USER_INFO_KEY) || "{}"));
+
   const login = (tokenVal, userInfoVal) => {
-    token.value = tokenVal
-    userInfo.value = userInfoVal
-    // Token持久化（有效期7天）
-    Cookies.set('token', tokenVal, { expires: 7 })
-  }
+    token.value = tokenVal;
+    userInfo.value = userInfoVal;
 
-  // 动作：退出登录（清除状态和Cookie）
+    localStorage.setItem(TOKEN_KEY, tokenVal);
+    localStorage.setItem(USER_INFO_KEY, JSON.stringify(userInfoVal));
+  };
+
   const logout = () => {
-    token.value = ''
-    userInfo.value = {}
-    Cookies.remove('token')
-  }
+    token.value = "";
+    userInfo.value = {};
 
-  return { token, userInfo, login, logout }
-})
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_INFO_KEY);
+  };
+
+  return { token, userInfo, login, logout };
+});
